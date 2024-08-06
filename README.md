@@ -11,6 +11,12 @@ Read, reply and delete emails, schedule a meeting from an email or update your c
 
 We're using [Nylas](https://www.nylas.com/products/) because I'm a former employee and because it's actually the easiest way to handle communications.
 
+## How can I setup my Blagbox?
+
+Just go to the [setup.md](https://github.com/atejada/BlagBox/blob/main/setup.md) page
+
 ## What does it looks like?
 
 I'm glad you ask, here are some screenshoots of what you can do in BlagBox.
+
+
