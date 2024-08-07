@@ -15,6 +15,11 @@ Easy! I'm using [Textual](https://textual.textualize.io/) the best framework to 
 
 We're using [Nylas](https://www.nylas.com/products/) because I'm a former employee and because it's actually the easiest way to handle communications.
 
+## How this is different from Textual Terminal Email Client?
+
+Well, I wrote [Textual Terminal Email Client](https://github.com/nylas-samples/textual_terminal_email_client) using Nylas V2 API, while I BlagBox from the
+scratch using Nylas V3 API. It's better in every sense of the way, with way more features.
+
 ## How can I setup my Blagbox?
 
 Just go to the [setup.md](https://github.com/atejada/BlagBox/blob/main/setup.md) page
