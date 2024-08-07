@@ -50,7 +50,7 @@ def get_message(self, message_id: str) -> str:
 def get_messages() -> List[Any]:
 # Create query parameters
     query_params = ListMessagesQueryParams(
-        {'in' : "INBOX", 'limit': os.environ.get("EMAIL_LIMIT")}
+        {'in' : os.environ.get("BLAGBOX_INBOX"), 'limit': os.environ.get("EMAIL_LIMIT")}
     )
     
     messages, _, _ = nylas.messages.list(os.environ.get("BLAGBOX_GRANT_ID"), query_params)

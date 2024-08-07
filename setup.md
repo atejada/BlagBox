@@ -21,6 +21,11 @@ And check the [Getting Started Guide](https://developer.nylas.com/docs/v3/gettin
 BLAGBOX_API = "YOUR_NYLAS_API_KEY"
 BLAGBOX_GRANT_ID = "YOUR_NYLAS_GRANT_ID"
 BLAGBOX_CONTACTS = "myContacts" #Replace with your contacts
+BLAGBOX_INBOX = "INBOX" #Replace with your folder id
 EMAIL_LIMIT = 10
+
+For **BLAGBOX_CONTACTS** follow this [Return all contacts groups](https://developer.nylas.com/docs/api/v3/ecc/#get-/v3/grants/-grant_id-/contacts/groups)
+
+For **BLAGBOX_INBOX** follow this [Return all folders](https://developer.nylas.com/docs/api/v3/ecc/#get-/v3/grants/-grant_id-/folders)
 
 4.- Have fun!
