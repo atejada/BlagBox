@@ -78,7 +78,10 @@ def get_contacts() -> List[Any]:
         "group" : os.environ.get("BLAGBOX_CONTACTS")
     }
 
-    contacts, _, _ = nylas.contacts.list(os.environ.get("BLAGBOX_GRANT_ID"), query_params)
+    try:
+        contacts, _, _ = nylas.contacts.list(os.environ.get("BLAGBOX_GRANT_ID"), query_params)
+    except Exception:
+        contacts = []
     return contacts
 
 # This can be considered the main screen
@@ -210,7 +213,7 @@ class MeetingScreen(Screen):
     def compose(self) -> ComposeResult:
         yield Header()
         yield Footer()
-        yield Vertical(
+        yield Horizontal(
             DateSelect(
                 placeholder="please select",
                 format="YYYY-MM-DD",
@@ -218,18 +221,18 @@ class MeetingScreen(Screen):
                 picker_mount="#main_container",
                 id = "date"
             ),
-            Input(placeholder="Meeting Time", id="time"),
-            Select(prompt = "Duration", options = [("5", 5), ("15", 15), ("30", 30), ("45", 45), ("60", 60)], id="duration"),
-            Input(placeholder="Meeting Title", id="title"),
-            Input(placeholder="Meeting Location", id="location"),
-            TextArea(id="description", text = "Replace with meeting description"),
             id="main_container",
-        )
+        )    
+        yield Input(placeholder="Meeting Time", id="time")
+        yield Select(prompt = "Duration", options = [("5", 5), ("15", 15), ("30", 30), ("45", 45), ("60", 60)], id="duration")
+        yield Input(placeholder="Meeting Title", id="title")
+        yield Input(placeholder="Meeting Location", id="location")
+        yield TextArea(id="description", text = "Replace with meeting description")
         yield Horizontal(
             Button("Confirm", variant="primary", id="confirm"),
             Label(" "),
             Button("Cancel", variant="primary", id="cancel"),
-        )        
+        )
 
     def action_confirm(self) -> None:
         message = nylas.messages.find(os.environ.get("BLAGBOX_GRANT_ID"), messageid[0]).data
@@ -312,7 +315,6 @@ class ContactScreen(Screen):
             Label(" "),
             Button("Cancel", variant="primary", id="cancel"),
         )
-        yield TextArea(id="body")
 
     def get_contact_details(self, contact_id) -> None:
         contactid.clear()
