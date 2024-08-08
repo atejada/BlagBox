@@ -1,3 +1,7 @@
 #date {
     height: 3;
 }
+
+#description {
+    height: 3;
+}

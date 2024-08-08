@@ -7,6 +7,7 @@ from textual.app import App, ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.widgets import DataTable, Label, Header, Footer, Input, Button, TextArea, Select
 from textual.screen import Screen
+from textual.containers import Container
 from textual.binding import Binding
 from bs4 import BeautifulSoup
 import textwrap
@@ -213,7 +214,7 @@ class MeetingScreen(Screen):
     def compose(self) -> ComposeResult:
         yield Header()
         yield Footer()
-        yield Horizontal(
+        yield Container(
             DateSelect(
                 placeholder="please select",
                 format="YYYY-MM-DD",
@@ -221,12 +222,12 @@ class MeetingScreen(Screen):
                 picker_mount="#main_container",
                 id = "date"
             ),
+            Input(placeholder="Meeting Time", id="time"),
+            Select(prompt = "Duration", options = [("5", 5), ("15", 15), ("30", 30), ("45", 45), ("60", 60)], id="duration"),
+            Input(placeholder="Meeting Title", id="title"),
+            Input(placeholder="Meeting Location", id="location"),        
             id="main_container",
-        )    
-        yield Input(placeholder="Meeting Time", id="time")
-        yield Select(prompt = "Duration", options = [("5", 5), ("15", 15), ("30", 30), ("45", 45), ("60", 60)], id="duration")
-        yield Input(placeholder="Meeting Title", id="title")
-        yield Input(placeholder="Meeting Location", id="location")
+        )
         yield TextArea(id="description", text = "Replace with meeting description")
         yield Horizontal(
             Button("Confirm", variant="primary", id="confirm"),
