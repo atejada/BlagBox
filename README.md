@@ -27,3 +27,24 @@ Just go to the [setup.md](https://github.com/atejada/BlagBox/blob/main/setup.md)
 ## What does it looks like?
 
 I'm glad you ask, here are some screenshoots of what you can do in BlagBox.
+
+**Read your Inbox**
+![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Inbox.png)
+
+**Read an email (Unread ones are in green)**
+![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_ReadEmail.png)
+
+**Reply to an email**
+![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_ReplyEmail.png)
+
+**Compose an email, choose from your contacts or freely type an email**
+![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Compose.png)
+
+**Schedule a meeting tied to an email**
+![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Meeting.png)
+
+**Meeting scheduled with the email sender**
+![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Meeting_Scheduled.png)
+
+**Update your contacts**
+![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Contact.png)
