@@ -4,8 +4,8 @@ import os
 from rich.text import Text
 from nylas import Client
 from textual.app import App, ComposeResult
-from textual.containers import Horizontal, Vertical
-from textual.widgets import DataTable, Label, Header, Footer, Input, Button, TextArea, Select
+from textual.containers import Horizontal
+from textual.widgets import DataTable, Label, Header, Footer, Input, Button, TextArea, Select, Markdown
 from textual.screen import Screen
 from textual.containers import Container
 from textual.binding import Binding
@@ -71,6 +71,19 @@ def get_messages() -> List[Any]:
             )
         )
     return messages
+
+# Read your events
+def get_events() -> List[Any]:
+    # Get today’s date
+    today = pendulum.now()
+    start_time = pendulum.local(today.year, today.month, today.day, today.hour, 0, 0).int_timestamp
+    end_time = pendulum.local(today.year, today.month, today.day, 22, 0, 0).int_timestamp
+    query_params = {"calendar_id": os.environ.get("BLAGBOX_GRANT_ID"), "start":  start_time, "end": end_time}
+    try:
+        events = nylas.events.list(os.environ.get("BLAGBOX_GRANT_ID"), query_params=query_params).data
+    except Exception:
+        events = []
+    return events
 
 # Read your contacts
 def get_contacts() -> List[Any]:
@@ -184,6 +197,8 @@ class EmailApp(App):
     def action_meeting(self) -> None:
         if len(messageid) > 0:
             self.push_screen(MeetingScreen())
+        else:
+            self.push_screen(EventsScreen())
 
 # We want to update a contact
     def action_contact(self) -> None:
@@ -192,6 +207,48 @@ class EmailApp(App):
 # We want to quit the app -:(
     def action_quit(self) -> None:
        self.exit()
+
+# Events screen. This screen we will be displayed when we are
+# listing events
+class EventsScreen(Screen):
+    BINDINGS = [
+        Binding("r", "refresh", "Refresh", show=False),
+        Binding("s", "confirm", "Confirm", show=False),
+        Binding("c", "cancel", "Cancel"),
+        Binding("d", "delete", "Delete", show=False),
+        Binding("o", "compose", "Compose", show=False),
+        Binding("p", "reply", "Reply", show=False),
+        Binding("m", "meeting", "Meeting", show=False),
+        Binding("k", "contact", "Contact", show=False),
+        Binding("q", "quit", "Quit", show=False),
+    ]
+# Load up the main components of the screen
+    def compose(self) -> ComposeResult:
+        yield Header()
+        yield Footer()
+        markdown = ""
+        event_date = ""
+        participant_details = ""
+        today = pendulum.now()
+        events = get_events()
+        for event in events:
+            match event.when.object:
+                case 'timespan':
+                    start_time = pendulum.from_timestamp(event.when.start_time, today.timezone.name).strftime("%H:%M:%S")
+                    end_time = pendulum.from_timestamp(event.when.end_time, today.timezone.name).strftime("%H:%M:%S")
+                    event_date = f"{start_time} to {end_time}"
+                case 'datespan':
+                    event_date = f"{event.when.start_date} to {event.when.end_date}"
+                case 'date':
+                    event_date = f"{event.when.date}"
+            participant_details = ""
+            for participant in event.participants:
+                participant_details += f"{participant.email} - "
+            markdown += "## " + event.title + "  \n" + "### " + event_date + "  \n" + event.description + "  \n" + "  \n" + participant_details[:-3] + "  \n"
+        yield Markdown(markdown)
+
+    def action_cancel(self) -> None:
+        app.pop_screen()
 
 # Meeting screen. This screen we will be displayed when we are
 # creating a new meeting
