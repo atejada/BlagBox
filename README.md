@@ -5,7 +5,7 @@ The ultimate Email, Calendar and Contacts Terminal Client
 ## Why a Terminal Client?
 
 Well, as developers, we most likely spend a lot of our time in the terminal, so why not have access to our email, calendar and contacts?
-Read, reply and delete emails, schedule a meeting from an email or update your contacts in an easy way.
+Read, reply and delete emails, schedule a meeting from an email, watch your upcoming events or update your contacts in an easy way.
 
 ## How can you make it work on the terminal?
 
@@ -17,8 +17,9 @@ We're using [Nylas](https://www.nylas.com/products/) because I'm a former employ
 
 ## How this is different from Textual Terminal Email Client?
 
-Well, I wrote [Textual Terminal Email Client](https://github.com/nylas-samples/textual_terminal_email_client) using Nylas V2 API, while I BlagBox from the
-scratch using Nylas V3 API. It's better in every sense of the way, with way more features.
+Well, I wrote [Textual Terminal Email Client](https://github.com/nylas-samples/textual_terminal_email_client) using Nylas V2 API and then migrated to V3 API as part of my daily job, 
+while I coded BlagBox from the scratch using Nylas V3 API on my spare time. It's a complete redesign over the old version. 
+It's better in every sense of the way, with way more features and functionalities.
 
 ## How can I setup my Blagbox?
 

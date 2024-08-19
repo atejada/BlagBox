@@ -1,3 +1,8 @@
+# BlagBox - The ultimate Email, Calendar and Contacts Terminal Client
+# Blag aka. Alvaro Tejada Galindo
+# Senior Developer Advocate
+# https://www.linkedin.com/in/atejada/
+
 # Import your dependencies
 from dotenv import load_dotenv
 import os
