@@ -466,7 +466,7 @@ class ReplyScreen(Screen):
         pass
         message = nylas.messages.find(os.environ.get("BLAGBOX_GRANT_ID"), messageid[0]).data
         self.query_one("#body").text = "<br>====<br>" + get_message(self, messageid[0])
-        self.query_one("#body").text += "<br><br>Send from my Terminal Email Client" 
+        self.query_one("#body").text += "<br><br>Send from The ultimate Email, Calendar and Contacts Terminal Client" 
         self.query_one("#email_from").value = message.from_[0]['email']
         self.query_one("#title").value = "Re: " + message.subject
 
@@ -479,7 +479,8 @@ class ReplyScreen(Screen):
         
         body = {"subject" : self.query_one("#title").value, 
                 "body": self.query_one("#body").text,
-                "to": participants}
+                "to": participants,
+                "reply_to_message_id": messageid[0]}
         try:
             nylas.messages.send(os.environ.get("BLAGBOX_GRANT_ID"), request_body = body)
             self.query_one("#email_from").value = ""
