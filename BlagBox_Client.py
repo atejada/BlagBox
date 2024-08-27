@@ -468,7 +468,7 @@ class ReplyScreen(Screen):
         self.query_one("#body").text = "<br>====<br>" + get_message(self, messageid[0])
         self.query_one("#body").text += "<br><br>Send from The ultimate Email, Calendar and Contacts Terminal Client" 
         self.query_one("#email_from").value = message.from_[0]['email']
-        self.query_one("#title").value = "Re: " + message.subject
+        self.query_one("#title").value = message.subject #"Re: " + message.subject
 
 # Grab the information and send the reply to the email
     def send_email(self) -> None:
@@ -480,7 +480,7 @@ class ReplyScreen(Screen):
         body = {"subject" : self.query_one("#title").value, 
                 "body": self.query_one("#body").text,
                 "to": participants}
-                #"reply_to_message_id": messageid[0]} Not working yet! -:( 
+                "reply_to_message_id": messageid[0]} #Only works if the subject remains the same
         try:
             nylas.messages.send(os.environ.get("BLAGBOX_GRANT_ID"), request_body = body)
             self.query_one("#email_from").value = ""
