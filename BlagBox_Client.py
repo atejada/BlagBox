@@ -182,7 +182,7 @@ class EmailApp(App):
             nylas.messages.destroy(os.environ.get("BLAGBOX_GRANT_ID"), self.id_message)
             self.populate_table()
         except Exception as e:
-            self.notify(e.type)
+            self.notify(str(e))
             self.populate_table()
 
 # We want to Compose a new email
@@ -329,7 +329,7 @@ class MeetingScreen(Screen):
             self.query_one("#description").text = ""
             app.pop_screen()
         except Exception as e:
-            self.notify(e.type)
+            self.notify(str(e))
 
     def action_cancel(self) -> None:
         app.pop_screen()
@@ -422,7 +422,7 @@ class ContactScreen(Screen):
             self.query_one("#email").value = ""
             self.query_one("#phone").value = ""
         except Exception as e:
-            self.notify(e.type)
+            self.notify(str(e))
 
 # We're pressing a button
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -480,7 +480,7 @@ class ReplyScreen(Screen):
         body = {"subject" : self.query_one("#title").value, 
                 "body": self.query_one("#body").text,
                 "to": participants}
-                "reply_to_message_id": messageid[0]} #Only works if the subject remains the same
+                #"reply_to_message_id": messageid[0]} #Not working yet! -:( 
         try:
             nylas.messages.send(os.environ.get("BLAGBOX_GRANT_ID"), request_body = body)
             self.query_one("#email_from").value = ""
@@ -489,7 +489,7 @@ class ReplyScreen(Screen):
             participants.clear()
             app.pop_screen()
         except Exception as e:
-            self.notify(e.type)
+            self.notify(str(e))
 
 # This commands should not work on this screen
     def action_delete(self) -> None:
@@ -570,7 +570,7 @@ class ComposeEmail(Screen):
             participants.clear()
             app.pop_screen()
         except Exception as e:
-            self.notify(e.type)
+            self.notify(str(e))
 
 # This commands should not work on this screen
     def action_delete(self) -> None:
