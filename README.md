@@ -1,6 +1,6 @@
 # BlagBox
 
-The ultimate Email, Calendar and Contacts Terminal Client
+The ultimate Email, Calendar and Contacts Terminal Client 📧🥰
 
 ## Why a Terminal Client?
 
