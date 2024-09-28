@@ -235,7 +235,7 @@ class EventsScreen(Screen):
         event_date = ""
         participant_details = ""
         today = pendulum.now()
-        events = get_events()
+        events = get_events()        
         for event in events:
             match event.when.object:
                 case 'timespan':
@@ -250,6 +250,8 @@ class EventsScreen(Screen):
             for participant in event.participants:
                 participant_details += f"{participant.email} - "
             markdown += "## " + event.title + "  \n" + "### " + event_date + "  \n" + event.description + "  \n" + "  \n" + participant_details[:-3] + "  \n"
+        if(len(events) == 0):
+            markdown += "## No events today"
         yield Markdown(markdown)
 
     def action_cancel(self) -> None:
