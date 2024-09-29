@@ -235,7 +235,7 @@ class EventsScreen(Screen):
         event_date = ""
         participant_details = ""
         today = pendulum.now()
-        events = get_events()        
+        events = get_events()
         for event in events:
             match event.when.object:
                 case 'timespan':
@@ -247,11 +247,12 @@ class EventsScreen(Screen):
                 case 'date':
                     event_date = f"{event.when.date}"
             participant_details = ""
+            event_description = event.description if event.description is not None else ""
             for participant in event.participants:
                 participant_details += f"{participant.email} - "
-            markdown += "## " + event.title + "  \n" + "### " + event_date + "  \n" + event.description + "  \n" + "  \n" + participant_details[:-3] + "  \n"
+            markdown += "## " + event.title + "  \n" + "### " + event_date + "  \n" + event_description + "  \n" + "  \n" + participant_details[:-3] + "  \n"
         if(len(events) == 0):
-            markdown += "## No events today"
+            markdown += "## No events today"        
         yield Markdown(markdown)
 
     def action_cancel(self) -> None:
@@ -468,7 +469,7 @@ class ReplyScreen(Screen):
         pass
         message = nylas.messages.find(os.environ.get("BLAGBOX_GRANT_ID"), messageid[0]).data
         self.query_one("#body").text = "<br>====<br>" + get_message(self, messageid[0])
-        self.query_one("#body").text += "<br><br>Sent from The ultimate Email, Calendar and Contacts Terminal Client" 
+        self.query_one("#body").text += "<br><br>Send from The ultimate Email, Calendar and Contacts Terminal Client" 
         self.query_one("#email_from").value = message.from_[0]['email']
         self.query_one("#title").value = message.subject #"Re: " + message.subject
 
@@ -546,7 +547,7 @@ class ComposeEmail(Screen):
         yield Input(placeholder="Title", id="title")
         body = TextArea(id="body")
         body.show_line_numbers = False
-        body.text = "<br><br>Sent from my Terminal Email Client"
+        body.text = "<br><br>Send from my Terminal Email Client"
         yield body
         yield Horizontal(
             Button("Send!", variant="primary", id="send"),

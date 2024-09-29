@@ -5,15 +5,15 @@ The ultimate Email, Calendar and Contacts Terminal Client 📧🥰
 ## Why a Terminal Client?
 
 Well, as developers, we most likely spend a lot of our time in the terminal, so why not have access to our email, calendar and contacts?
-Read, reply and delete emails, schedule a meeting from an email, watch your upcoming events or update your contacts in an easy way.
+Read, reply and delete emails, schedule a meeting from an email, list your upcoming events or update your contacts in an easy way.
 
 ## How can you make it work on the terminal?
 
-Easy! I'm using [Textual](https://textual.textualize.io/) the best framework to build Terminal applications on Python.
+Easy! I'm using [Textual](https://textual.textualize.io/) the best framework to build Terminal applications on Python 🐍.
 
 ## How do we handle Email, Calendar and Contacts access?
 
-We're using [Nylas](https://www.nylas.com/products/) because I'm a former employee and because it's actually the easiest way to handle communications.
+I'm using [Nylas](https://www.nylas.com/products/) because I'm a former employee and because it's actually the easiest way to handle communications.
 
 ## How this is different from Textual Terminal Email Client?
 
@@ -33,19 +33,22 @@ I'm glad you ask, here are some screenshoots of what you can do in BlagBox.
 ![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Inbox.png)
 
 **Read an email (Unread ones are in green)**
-![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_ReadEmail.png)
+![BlagBox_ReadEmail](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_ReadEmail.png)
 
 **Reply to an email**
-![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_ReplyEmail.png)
+![BlagBox_ReplyEmail](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_ReplyEmail.png)
 
 **Compose an email, choose from your contacts or freely type an email**
-![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Compose.png)
+![BlagBox_Compose](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Compose.png)
 
 **Schedule a meeting tied to an email**
-![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Meeting.png)
+![BlagBox_Meeting](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Meeting.png)
 
 **Meeting scheduled with the email sender**
-![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Meeting_Scheduled.png)
+![BlagBox_Meeting_Scheduled](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Meeting_Scheduled.png)
+
+**List your upcoming meetings**
+![BlagBox_Meetings_List](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Meetings_List.png)
 
 **Update your contacts**
-![BlagBox_Inbox](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Contact.png)
+![BlagBox_Contact](https://github.com/atejada/BlagBox/blob/main/Screenshots/BlagBox_Contact.png)
