@@ -1,5 +1,7 @@
 ## How to configure your BlagBox
 
+**You need Python3.10 or higher**
+
 1.- Install the following packages
 
 * pip install nylas
