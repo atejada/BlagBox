@@ -386,13 +386,12 @@ class ContactScreen(Screen):
         contactid.clear()
         contactid.append(contact_id)
         contact, _ = nylas.contacts.find(os.environ.get("BLAGBOX_GRANT_ID"), contact_id)
-        self.query_one("#first_name").value = contact.given_name
-        self.query_one("#last_name").value = contact.surname
-        self.query_one("#company").value = contact.company_name
-        self.query_one("#job").value = contact.job_title
-        self.query_one("#email").value = contact.emails[0].email
-        self.query_one("#phone").value = contact.phone_numbers[0].number
-        self.query_one("#phone").text = "Test"
+        self.query_one("#first_name").value = contact.given_name if contact.given_name != None else ""
+        self.query_one("#last_name").value = contact.surname if contact.surname != None else ""
+        self.query_one("#company").value = contact.company_name if contact.company_name != None else ""
+        self.query_one("#job").value = contact.job_title if contact.job_title != None else ""
+        self.query_one("#email").value = contact.emails[0].email if contact.emails[0].email != None else ""
+        self.query_one("#phone").value = contact.phone_numbers[0].number if len(contact.phone_numbers) > 0 else ""
 
     def action_cancel(self) -> None:
         app.pop_screen()
