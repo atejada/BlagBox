@@ -178,12 +178,15 @@ class EmailApp(App):
 
 # We're deleting an email
     def action_delete(self) -> None:
-        try:
-            nylas.messages.destroy(os.environ.get("BLAGBOX_GRANT_ID"), self.id_message)
-            self.populate_table()
-        except Exception as e:
-            self.notify(str(e))
-            self.populate_table()
+        if len(messageid) > 0:
+            try:
+                nylas.messages.destroy(os.environ.get("BLAGBOX_GRANT_ID"), self.id_message)
+                self.populate_table()
+            except Exception as e:
+                self.notify(str(e))
+                self.populate_table()
+        else:
+            self.notify("Open an email first")
 
 # We want to Compose a new email
     def action_compose(self) -> None:
