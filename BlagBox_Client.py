@@ -200,6 +200,8 @@ class EmailApp(App):
     def action_reply(self) -> None:
         if len(messageid) > 0:
             self.push_screen(ReplyScreen())
+        else:
+            self.notify("Open an email first")
 
 # We want to schedule a meeting
     def action_meeting(self) -> None:
@@ -389,11 +391,11 @@ class ContactScreen(Screen):
         contactid.clear()
         contactid.append(contact_id)
         contact, _ = nylas.contacts.find(os.environ.get("BLAGBOX_GRANT_ID"), contact_id)
-        self.query_one("#first_name").value = contact.given_name if contact.given_name != None else ""
-        self.query_one("#last_name").value = contact.surname if contact.surname != None else ""
-        self.query_one("#company").value = contact.company_name if contact.company_name != None else ""
-        self.query_one("#job").value = contact.job_title if contact.job_title != None else ""
-        self.query_one("#email").value = contact.emails[0].email if contact.emails[0].email != None else ""
+        self.query_one("#first_name").value = contact.given_name if contact.given_name is not None else ""
+        self.query_one("#last_name").value = contact.surname if contact.surname is not None else ""
+        self.query_one("#company").value = contact.company_name if contact.company_name is not None else ""
+        self.query_one("#job").value = contact.job_title if contact.job_title is not None else ""
+        self.query_one("#email").value = contact.emails[0].email if contact.emails[0].email is not None else ""
         self.query_one("#phone").value = contact.phone_numbers[0].number if len(contact.phone_numbers) > 0 else ""
 
     def action_cancel(self) -> None:
