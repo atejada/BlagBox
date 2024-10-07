@@ -28,6 +28,8 @@ And check the [Getting Started Guide](https://developer.nylas.com/docs/v3/gettin
 
 For **BLAGBOX_CONTACTS** follow this [Return all contacts groups](https://developer.nylas.com/docs/api/v3/ecc/#get-/v3/grants/-grant_id-/contacts/groups)
 
+**IMPORTANT** All contacts in a group need to have at least a given name, otherwise the update will fail without a clear explanation. And this is the Nylas API fault, not Blagbox.
+
 For **BLAGBOX_INBOX** follow this [Return all folders](https://developer.nylas.com/docs/api/v3/ecc/#get-/v3/grants/-grant_id-/folders)
 
 4.- Have fun!
